@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import pic from "../assets/no-profile-picture.webp"
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { giveData } from '../data/data';
 const Cards = ({emData,setEmData,handleBack}) => {
   const [empData,setEmpData]=useState([]);
   useEffect(()=>{
