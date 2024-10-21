@@ -3,18 +3,22 @@ import pic from "../assets/no-profile-picture.webp"
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 const Cards = ({emData,setEmData,handleBack}) => {
+  const [empData,setEmpData]=useState([]);
+  useEffect(()=>{
+    const fetchData=()=>{
+        const result=giveData();
+        setEmpData(result);
+    };
+    fetchData();
+  },[]);
   const handleClick=(id)=>{
-    if(emData.length==1){
-      alert("can not delete when there is one field,please go back");
-    }
-    if(emData.length>1){
-      const confirmDelete=window.confirm("Do you want to delete this record");
+    const confirmDelete=window.confirm("Do you want to delete this record");
     if(confirmDelete){
-      const filtered=emData.filter(emp=>emp.id.toString()!==id.toString());
+      const filtered=empData.filter(emp=>emp.id.toString()!==id.toString());
       setEmData(filtered);
     }
+      handleBack();
     }
-  }
   return (
     <div>
       <div className={`py-6 ${emData.length<=1?"bg-white":"bg-zinc-100"}`}>
